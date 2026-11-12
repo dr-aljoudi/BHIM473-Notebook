@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7f5ef">
+<meta name="description" content="BHIM473 interactive Health Informatics notebook, weeks 1–6 and 8–9.">
+<title>BHIM473 | Health Informatics Notebook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+<script src="./app.js" defer></script>
+</head>
+<body data-theme="notebook">
+<div class="appShell">
+<aside class="sidebar" id="sidebar">
+  <a class="brand" href="#week-1" aria-label="BHIM473 home">
+    <span class="brandIcon" aria-hidden="true">✳</span>
+    <span class="brandText"><strong>BHIM<span>473</span></strong><small data-i18n="brandCaption">STUDY NOTEBOOK</small></span>
+  </a>
+  <div class="sideCourse">
+    <span class="eyebrow" data-i18n="yourCourse">YOUR COURSE</span>
+    <h2 data-i18n="courseHeading">Health<br>Informatics</h2>
+    <p data-i18n="courseSub">8 learning chapters · based on original lecture decks</p>
+  </div>
+  <div class="chaptersHead"><span class="eyebrow" data-i18n="chapters">CHAPTERS</span><span class="pill">08</span></div>
+  <nav id="weekNav" class="weekNav" aria-label="Course weeks"></nav>
+  <div class="sidebarBottom">
+    <div class="progressHead"><span data-i18n="progress">Your reading progress</span><strong id="percentDone">0%</strong></div>
+    <div class="progressTrack"><div id="progressBar"></div></div>
+    <p class="sidebarNote" data-i18n="sourceNote">Study cards preserve content from the original lecture slides.</p>
+  </div>
+</aside>
+<div id="scrim" class="scrim"></div>
+<main class="workspace">
+  <header class="topbar">
+    <div class="crumbWrap"><button id="menuBtn" type="button" class="menuBtn" aria-label="Open chapters">☰</button><span class="crumb" data-i18n="courseSmall">COURSE</span><span class="slash">/</span><strong id="crumbWeek">WEEK 01</strong></div>
+    <div class="controls">
+      <label class="control"><span data-i18n="style">STYLE</span><select id="themeSelect" aria-label="Reading style"><option value="notebook">Notebook</option><option value="minimal">Minimal</option><option value="studio">Studio</option><option value="dark">Dark focus</option></select></label>
+      <label class="control"><span data-i18n="language">LANGUAGE</span><select id="langSelect" aria-label="Language"><option value="en">English</option><option value="ar">العربية</option></select></label>
+      <button class="printBtn" id="printBtn" type="button" aria-label="Print or save current week as PDF" title="Print or save as PDF">⎙</button>
+    </div>
+  </header>
+  <div class="pageContent">
+    <section class="hero">
+      <span class="heroDecoration" aria-hidden="true">✳</span>
+      <div class="heroEyebrow"><span class="heroBadge" id="weekTag">WEEK 01</span><span class="heroDot">·</span><span id="lessonCount">SOURCE-BASED LESSON</span></div>
+      <h1 id="lessonTitle">Foundations of Health Informatics</h1>
+      <p id="lessonDesc"></p>
+      <div class="heroActions"><button id="startBtn" type="button" class="primaryBtn"><span data-i18n="continue">Continue reading</span> <span aria-hidden="true">↗</span></button><button id="printHeroBtn" type="button" class="ghostBtn"><span data-i18n="savePdf">Save week as PDF</span> <span aria-hidden="true">⎙</span></button></div>
+    </section>
+    <section class="overview">
+      <div class="overviewIcon" aria-hidden="true">✦</div>
+      <div class="overviewCopy"><span class="eyebrow" data-i18n="glance">AT A GLANCE</span><h2 data-i18n="yourGuide">Your study guide</h2><p id="overviewDesc"></p></div>
+      <div class="overviewCount"><strong id="conceptCount">—</strong><span data-i18n="studyCards">Study cards</span></div>
+    </section>
+    <section id="studyArea" class="studyArea">
+      <div class="studyHeading">
+        <div><span class="eyebrow" data-i18n="theLesson">THE LESSON</span><h2 data-i18n="readReflect">Read, reflect, understand.</h2></div>
+        <div class="studyTools"><label class="searchField"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search this week" aria-label="Search cards"></label><button type="button" id="collapseBtn" class="outlineBtn">Collapse all</button></div>
+      </div>
+      <p id="languageNotice" class="languageNotice" hidden></p>
+      <div class="studyGrid">
+        <div id="lessonList" class="lessonList" aria-live="polite"></div>
+        <aside class="studyAside">
+          <div class="companion">
+            <span class="eyebrow" data-i18n="companion">STUDY COMPANION</span>
+            <h3 data-i18n="makeStick">Make it stick.</h3>
+            <p data-i18n="companionDesc">Mark cards as read to track your progress. Your progress stays in this browser.</p>
+            <div class="rule"></div>
+            <h4 data-i18n="topics">Topics in this week</h4>
+            <div id="topicList"></div>
+          </div>
+          <div class="sourceCard">
+            <span class="sourceIcon" aria-hidden="true">⌁</span>
+            <h4 data-i18n="sourceTitle">Grounded in the lectures</h4>
+            <p data-i18n="sourceDesc">Each card identifies its page in the original lecture. Print this week to save a PDF copy of your notes.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+    <div class="bottomNav"><button id="prevWeek" type="button" class="weekSwitch"><small data-i18n="previous">← PREVIOUS WEEK</small><strong id="prevWeekTitle">—</strong></button><button id="nextWeek" type="button" class="weekSwitch next"><small data-i18n="next">NEXT WEEK →</small><strong id="nextWeekTitle">—</strong></button></div>
+    <footer><strong>BHIM473</strong> <span data-i18n="footer">Health Informatics · Weeks 1–6, 8 and 9 · Educational reading notebook</span></footer>
+  </div>
+</main>
+</div>
+</body></html>
